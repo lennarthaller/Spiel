@@ -2,27 +2,18 @@
 #define PUNKTE_HPP
 
 #include <iostream>
-#include "Singleton.hpp"
-
-using namespace std;
 
 //#define g_pPunkte CPunkte::Get()
 
-class CPunkte : public TSingleton<CPunkte>
+class CPunkte
 {
-	private:
-	
-	//Membervariablen
-	int m_Punktestand;
-	char buchstabe;
-	
-	public:
-	//Memberfunktionen
-
+public:
 	CPunkte ();
-	void Load (int Startpunkte);
-	void m_zaehlePunkte ();
-	void m_zeigePunkte ();
+	void ZaehlePunkte (int nPunkte);
+	int getPunkte ();
+private:
+	int m_nPunkte;
+	
 };
 
 #endif

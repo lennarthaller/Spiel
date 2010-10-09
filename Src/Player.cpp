@@ -8,7 +8,6 @@ CPlayer::CPlayer ()
 {
   m_pSpritePlayer = NULL;
   m_pSpriteShot = NULL;
-  m_pSpielerpunkte = NULL;
 
 } // Konstruktor
 
@@ -20,8 +19,6 @@ CPlayer::CPlayer ()
 void CPlayer::Init ()
 {
 	m_nLeben = 3;
-	m_pSpielerpunkte = new CPunkte;
-	m_pSpielerpunkte->Load (911);
 
   // Spielersprite erstellen
   m_pSpritePlayer = new CSprite;
@@ -93,6 +90,12 @@ bool CPlayer::SpielerGetroffen ()
   }
   return false;
 }
+
+void CPlayer::ZaehlePunkte (int nPunkte)
+{
+	m_Punkte.ZaehlePunkte (nPunkte);
+}
+
 
 // Render
 //

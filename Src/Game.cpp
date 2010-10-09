@@ -256,8 +256,7 @@ void CGame::CheckCollisions ()
 			ItShot->SetAlive (false);
 		
 			//Aufruf der funktion "funktion" zum zählen der punkte
-			CPunkte::Get()->m_zaehlePunkte();
-
+			m_pPlayer->ZaehlePunkte(1);
 		  }
 		}
 	}

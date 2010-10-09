@@ -19,14 +19,13 @@ class CPlayer
     list<CShot> *GetShotList () {return &m_ShotList;}
 	SDL_Rect GetRect ();
 	bool SpielerGetroffen ();
+	void ZaehlePunkte (int nPunkte);
 
   private:
     void ProcessMoving   ();
     void ProcessShooting ();
     void CheckPosition   ();
 	
-	CPunkte *m_pSpielerpunkte; // Punkte des Spielers
-
     CSprite *m_pSpritePlayer;  // Sprite für Spieler
     CSprite *m_pSpriteShot;    // Sprite für Laserschüsse
     float m_fXPos;             // X-Position des Spielers
@@ -35,6 +34,7 @@ class CPlayer
     bool m_bShotLock;         // Darf der nächste Schuss raus?
     list<CShot> m_ShotList;   // Liste der Schüsse
 	int m_nLeben;
+	CPunkte m_Punkte;
 
 };
 
