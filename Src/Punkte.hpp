@@ -11,6 +11,7 @@ public:
 	CPunkte();
 	void ZaehlePunkte (int nPunkte);
 	int GetPunkte ();
+
 private:
 	int m_nPunkte;
 	

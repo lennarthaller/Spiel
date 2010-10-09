@@ -1,7 +1,6 @@
 
 
 #include "Game.hpp"
-#include "Punkte.hpp"
 
 
 // Konstruktor
