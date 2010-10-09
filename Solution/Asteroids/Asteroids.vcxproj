@@ -80,6 +80,7 @@
     <ClInclude Include="..\..\Src\Asteroid.hpp" />
     <ClInclude Include="..\..\Src\Framework.hpp" />
     <ClInclude Include="..\..\Src\Game.hpp" />
+    <ClInclude Include="..\..\Src\NumberDisplay.hpp" />
     <ClInclude Include="..\..\Src\Player.hpp" />
     <ClInclude Include="..\..\Src\Punkte.hpp" />
     <ClInclude Include="..\..\Src\Shot.hpp" />
@@ -92,6 +93,7 @@
     <ClCompile Include="..\..\Src\Framework.cpp" />
     <ClCompile Include="..\..\Src\Game.cpp" />
     <ClCompile Include="..\..\Src\main.cpp" />
+    <ClCompile Include="..\..\Src\NumberDisplay.cpp" />
     <ClCompile Include="..\..\Src\Player.cpp" />
     <ClCompile Include="..\..\Src\Punkte.cpp" />
     <ClCompile Include="..\..\Src\Shot.cpp" />

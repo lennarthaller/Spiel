@@ -19,6 +19,10 @@ CPlayer::CPlayer ()
 void CPlayer::Init ()
 {
 	m_nLeben = 3;
+	m_LebenDisplay.SetScreenPosition(20, 20);
+	m_LebenDisplay.SetNumber(m_nLeben);
+	m_PunkteDisplay.SetScreenPosition(700, 20);
+	m_PunkteDisplay.SetNumber(GetPunkte());
 
   // Spielersprite erstellen
   m_pSpritePlayer = new CSprite;
@@ -84,6 +88,9 @@ SDL_Rect CPlayer::GetRect ()
 bool CPlayer::SpielerGetroffen ()
 {
   m_nLeben --;
+  
+  m_LebenDisplay.SetNumber(m_nLeben);
+
   if ( m_nLeben == 0)
   {
 	return true;
@@ -94,6 +101,7 @@ bool CPlayer::SpielerGetroffen ()
 void CPlayer::ZaehlePunkte (int nPunkte)
 {
 	m_Punkte.ZaehlePunkte (nPunkte);
+	m_PunkteDisplay.SetNumber(GetPunkte());
 }
 
 int CPlayer::GetPunkte ()

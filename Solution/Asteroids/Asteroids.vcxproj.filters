@@ -42,6 +42,9 @@
     <ClInclude Include="..\..\Src\Timer.hpp">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Src\NumberDisplay.hpp">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\Asteroid.cpp">
@@ -69,6 +72,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\Timer.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\NumberDisplay.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

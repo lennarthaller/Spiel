@@ -5,6 +5,7 @@
 #include "Sprite.hpp"
 #include "Shot.hpp"
 #include "Punkte.hpp"
+#include "NumberDisplay.hpp"
 
 class CPlayer
 {
@@ -36,7 +37,8 @@ class CPlayer
     list<CShot> m_ShotList;   // Liste der Schüsse
 	int m_nLeben;
 	CPunkte m_Punkte;
-
+	CNumberDisplay m_PunkteDisplay;
+	CNumberDisplay m_LebenDisplay;
 };
 
 #endif
