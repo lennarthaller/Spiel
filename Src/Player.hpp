@@ -18,6 +18,7 @@ class CPlayer
     void Reset  ();
     list<CShot> *GetShotList () {return &m_ShotList;}
 	SDL_Rect GetRect ();
+	bool SpielerGetroffen ();
 
   private:
     void ProcessMoving   ();
@@ -33,6 +34,7 @@ class CPlayer
     float m_fAnimPhase;       // Aktuelle Animationsphase
     bool m_bShotLock;         // Darf der nächste Schuss raus?
     list<CShot> m_ShotList;   // Liste der Schüsse
+	int m_nLeben;
 
 };
 

@@ -224,35 +224,43 @@ void CGame::CheckCollisions ()
         RectPlayer.x < RectAsteroid.x + RectAsteroid.w &&
         RectPlayer.x + RectPlayer.w > RectAsteroid.x)
 	{
-		m_bGameRun = false;
-		break;
-	}
+		ItAsteroid->SetAlive (false);
 
-    // Alle Schüsse durchlaufen
-    for (ItShot = ShotList->begin (); 
-         ItShot != ShotList->end ();
-         ++ItShot)
-    {
-      // Rect des Schusses holen
-      RectShot = ItShot->GetRect ();
-
-      // Überschneiden sich die Rects?
-      if (RectShot.y < RectAsteroid.y + RectAsteroid.h &&
-          RectShot.y + RectShot.h > RectAsteroid.y &&
-          RectShot.x < RectAsteroid.x + RectAsteroid.w &&
-          RectShot.x + RectShot.w > RectAsteroid.x)
-      {
-        // Ja, also gab es eine Kollision. Somit Schuss und
-        // Asteroid deaktivieren
-        ItAsteroid->SetAlive (false);
-        ItShot->SetAlive (false);
+		bool GameOver = m_pPlayer->SpielerGetroffen ();
 		
-		//Aufruf der funktion "funktion" zum zählen der punkte
-	    CPunkte::Get()->m_zaehlePunkte();
+		if (GameOver)
+		{
+		  m_bGameRun = false;
+		}
 
-	  }
+	}
+	else
+	{
+		// Alle Schüsse durchlaufen
+		for (ItShot = ShotList->begin (); 
+			 ItShot != ShotList->end ();
+			 ++ItShot)
+		{
+		  // Rect des Schusses holen
+		  RectShot = ItShot->GetRect ();
 
-    }
+		  // Überschneiden sich die Rects?
+		  if (RectShot.y < RectAsteroid.y + RectAsteroid.h &&
+			  RectShot.y + RectShot.h > RectAsteroid.y &&
+			  RectShot.x < RectAsteroid.x + RectAsteroid.w &&
+			  RectShot.x + RectShot.w > RectAsteroid.x)
+		  {
+			// Ja, also gab es eine Kollision. Somit Schuss und
+			// Asteroid deaktivieren
+			ItAsteroid->SetAlive (false);
+			ItShot->SetAlive (false);
+		
+			//Aufruf der funktion "funktion" zum zählen der punkte
+			CPunkte::Get()->m_zaehlePunkte();
+
+		  }
+		}
+	}
 
     // Asteroid löschen, falls deaktiviert
     if (ItAsteroid->IsAlive () )

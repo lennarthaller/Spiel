@@ -19,6 +19,7 @@ CPlayer::CPlayer ()
 //
 void CPlayer::Init ()
 {
+	m_nLeben = 3;
 	m_pSpielerpunkte = new CPunkte;
 	m_pSpielerpunkte->Load (911);
 
@@ -83,6 +84,15 @@ SDL_Rect CPlayer::GetRect ()
 	return m_pSpritePlayer->GetRect ();	
 }
 
+bool CPlayer::SpielerGetroffen ()
+{
+  m_nLeben --;
+  if ( m_nLeben == 0)
+  {
+	return true;
+  }
+  return false;
+}
 
 // Render
 //
