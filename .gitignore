@@ -1,1 +1,8 @@
 Thumbs.db
+*.suo
+*.vcxproj.user
+Solution/Asteroids/Debug
+Solution/Asteroids/Release
+Solution/Asteroids/ipch
+*.sdf
+*.opensdf
