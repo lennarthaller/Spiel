@@ -210,11 +210,23 @@ void CGame::CheckCollisions ()
   SDL_Rect RectAsteroid;
   SDL_Rect RectShot;
 
+  SDL_Rect RectPlayer = m_pPlayer->GetRect();
+
   // Alle Asteroiden durchlaufen
   while (ItAsteroid != m_AsteroidList.end () )
   {
     // Rect des Asteroiden holen
     RectAsteroid = ItAsteroid->GetRect ();
+
+	// Überschneiden sich die Rects?
+    if (RectPlayer.y < RectAsteroid.y + RectAsteroid.h &&
+        RectPlayer.y + RectPlayer.h > RectAsteroid.y &&
+        RectPlayer.x < RectAsteroid.x + RectAsteroid.w &&
+        RectPlayer.x + RectPlayer.w > RectAsteroid.x)
+	{
+		m_bGameRun = false;
+		break;
+	}
 
     // Alle Schüsse durchlaufen
     for (ItShot = ShotList->begin (); 

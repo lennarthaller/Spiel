@@ -17,6 +17,7 @@ class CPlayer
     void Update ();
     void Reset  ();
     list<CShot> *GetShotList () {return &m_ShotList;}
+	SDL_Rect GetRect ();
 
   private:
     void ProcessMoving   ();

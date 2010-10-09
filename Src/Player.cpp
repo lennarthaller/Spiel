@@ -78,6 +78,11 @@ void CPlayer::Reset ()
 
 } // Reset
 
+SDL_Rect CPlayer::GetRect ()
+{
+	return m_pSpritePlayer->GetRect ();	
+}
+
 
 // Render
 //
