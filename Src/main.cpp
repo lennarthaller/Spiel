@@ -38,7 +38,8 @@ int main (int argc, char *argv[])
 	
 		case ('N'):
 		case ('n'):  {
-			if (g_pFramework->Init (800, 600, 16, true) == false)
+			bool Success = g_pFramework->Init (800, 600, 16, false);
+			if (!Success)
 				return (0);
 			CGame Game;
 			Game.Init ();
