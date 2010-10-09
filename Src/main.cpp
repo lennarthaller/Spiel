@@ -25,7 +25,7 @@ int main (int argc, char *argv[])
 	do
 	{
 	cout << "Asteroids - Menue" << endl;
-	cout << "-------------------" << endl;
+	cout << "-----------------" << endl;
 	cout << "(N)eus Spiel starten" << endl;
 	cout << "(H)ighscore anzeigen" << endl;
 	cout << "(I)nfo" << endl;
