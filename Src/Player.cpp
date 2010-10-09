@@ -19,7 +19,7 @@ CPlayer::CPlayer ()
 void CPlayer::Init ()
 {
 	m_nLeben = 3;
-	m_LebenDisplay.SetScreenPosition(20, 20);
+	m_LebenDisplay.SetScreenPosition(89, 20);
 	m_LebenDisplay.SetNumber(m_nLeben);
 	m_PunkteDisplay.SetScreenPosition(700, 20);
 	m_PunkteDisplay.SetNumber(GetPunkte());
@@ -118,6 +118,9 @@ void CPlayer::Render ()
   // Position des Spielers setzen und Sprite rendern
   m_pSpritePlayer->SetPos (m_fXPos, m_fYPos);
   m_pSpritePlayer->Render (m_fAnimPhase);
+ 
+  m_PunkteDisplay.Render ();
+  m_LebenDisplay.Render ();
 
   // Iterator für Schussliste
   list<CShot>::iterator it = m_ShotList.begin ();
