@@ -20,6 +20,7 @@ class CPlayer
 	SDL_Rect GetRect ();
 	bool SpielerGetroffen ();
 	void ZaehlePunkte (int nPunkte);
+	int GetPunkte ();
 
   private:
     void ProcessMoving   ();

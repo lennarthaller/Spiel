@@ -9,5 +9,9 @@ CPunkte::CPunkte ()
 void CPunkte::ZaehlePunkte (int Punkte)
 {
 	m_nPunkte += Punkte;
-	std::cout << m_nPunkte << std::endl;
+}
+
+int CPunkte::GetPunkte ()
+{
+	return m_nPunkte;
 }

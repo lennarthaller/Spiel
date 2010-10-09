@@ -8,9 +8,9 @@
 class CPunkte
 {
 public:
-	CPunkte ();
+	CPunkte();
 	void ZaehlePunkte (int nPunkte);
-	int getPunkte ();
+	int GetPunkte ();
 private:
 	int m_nPunkte;
 	

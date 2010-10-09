@@ -52,7 +52,9 @@ void CGame::Init ()
 //
 void CGame::Quit ()
 {
-  // Spieler freigeben
+  cout << m_pPlayer->GetPunkte () << endl;
+
+	// Spieler freigeben
   if (m_pPlayer != NULL)
   {
     m_pPlayer->Quit ();

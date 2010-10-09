@@ -96,6 +96,10 @@ void CPlayer::ZaehlePunkte (int nPunkte)
 	m_Punkte.ZaehlePunkte (nPunkte);
 }
 
+int CPlayer::GetPunkte ()
+{
+	return m_Punkte.GetPunkte ();
+}
 
 // Render
 //
