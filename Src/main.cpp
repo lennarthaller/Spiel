@@ -71,7 +71,7 @@ int main (int argc, char *argv[])
 
 		case ('I'):
 		case ('i'): {
-			cout << "\nAsteroids v1.0\n";
+			cout << "\nAsteroids v2.0\n";
 			cout << "Copyright Lennart Haller\n\n";
 					} break;
 		
