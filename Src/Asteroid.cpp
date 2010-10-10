@@ -32,6 +32,9 @@ void CAsteroid::Init (CSprite *pSpriteAsteroid, float fXPos, float fYPos)
 //
 void CAsteroid::Update ()
 {
+	
+  bLostAsteroid = false;
+  
   // Asteroid bewegen
   m_fYPos += 200.0f * g_pTimer->GetElapsed ();
 
@@ -46,7 +49,10 @@ void CAsteroid::Update ()
 
   // Deaktivieren, falls außerhalb des Bildschirms
   if (m_fYPos > 590.0f)
+  {
     m_bIsAlive = false;
+    bLostAsteroid = true;
+  }
 
 } // Update
 

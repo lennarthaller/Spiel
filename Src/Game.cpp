@@ -103,7 +103,7 @@ void CGame::Run ()
     // Spieler updaten und rendern
     m_pPlayer->Update ();
     m_pPlayer->Render ();
-
+	
     // Neue Asteroiden hinzufügen
     SpawnAsteroids ();
 
@@ -257,7 +257,7 @@ void CGame::CheckCollisions ()
 			ItShot->SetAlive (false);
 		
 			//Aufruf der funktion "funktion" zum zählen der punkte
-			m_pPlayer->ZaehlePunkte(1);
+			m_pPlayer->ZaehlePunkte(2);
 		  }
 		}
 	}
@@ -290,6 +290,8 @@ void CGame::RenderAsteroids ()
 
     // Asteroid updaten
     It->Update ();
+	if (It->bLostAsteroid)
+		m_pPlayer->ZaehlePunkte(-1);
 
   }
 

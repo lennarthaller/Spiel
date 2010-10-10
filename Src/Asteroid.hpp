@@ -12,6 +12,7 @@ class CAsteroid
     bool IsAlive  () {return m_bIsAlive;}
     void SetAlive (bool bIsAlive) {m_bIsAlive = bIsAlive;}
     SDL_Rect GetRect () {return m_Rect;}
+	bool bLostAsteroid;
 
   private:
     CSprite *m_pSpriteAsteroid; // Zeiger auf Asteroiden-Sprite
