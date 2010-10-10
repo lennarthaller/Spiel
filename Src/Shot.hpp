@@ -13,6 +13,8 @@ class CShot
     void SetAlive (bool bIsAlive) {m_bIsAlive = bIsAlive;}
     SDL_Rect GetRect () {return m_Rect;}
 
+	bool bWastedShot;
+
   private:
     CSprite *m_pSpriteShot; // Zeiger auf Laser-Sprite
     float    m_fXPos;       // X-Position des Schusses

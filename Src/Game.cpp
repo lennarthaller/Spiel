@@ -51,7 +51,7 @@ void CGame::Init ()
 //
 void CGame::Quit ()
 {
-  cout << "sie haben " << m_pPlayer->GetPunkte () << " Asteroiden abgeschossen." << endl;
+  cout << "\ndu hast " << m_pPlayer->GetPunkte () << " Punkte.\n" << endl;
 
 	// Spieler freigeben
   if (m_pPlayer != NULL)

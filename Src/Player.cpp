@@ -21,7 +21,7 @@ void CPlayer::Init ()
 	m_nLeben = 3;
 	m_LebenDisplay.SetScreenPosition(89, 20);
 	m_LebenDisplay.SetNumber(m_nLeben);
-	m_PunkteDisplay.SetScreenPosition(700, 20);
+	m_PunkteDisplay.SetScreenPosition(734, 20);
 	m_PunkteDisplay.SetNumber(GetPunkte());
 
   // Spielersprite erstellen
@@ -130,6 +130,9 @@ void CPlayer::Render ()
   {
     // Schuss updaten
     it->Update ();
+
+	if (it->bWastedShot)
+		ZaehlePunkte (-10);
 
     // Ist der Schuss noch aktiv?
     if (it->IsAlive ())

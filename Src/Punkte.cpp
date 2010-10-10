@@ -9,6 +9,8 @@ CPunkte::CPunkte ()
 void CPunkte::ZaehlePunkte (int Punkte)
 {
 	m_nPunkte += Punkte;
+	if (m_nPunkte < 0)
+		m_nPunkte = 0;
 }
 
 int CPunkte::GetPunkte ()

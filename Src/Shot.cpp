@@ -28,7 +28,9 @@ void CShot::Init (CSprite *pSpriteShot, float fXPos, float fYPos)
 // Aufgabe: Schuss bewegen und Position pr¸fen
 //
 void CShot::Update ()
-{
+{ 
+  
+  bWastedShot = false;
   // Schuss bewegen
   m_fYPos -= 400.0f * g_pTimer->GetElapsed ();
 
@@ -36,7 +38,10 @@ void CShot::Update ()
 
   // Deaktivieren, falls auﬂerhalb des Bildschirms
   if (m_fYPos < -15.0f)
-    m_bIsAlive = false;
+  {
+	m_bIsAlive = false;
+	bWastedShot = true;
+  }
 
 } // Update
 
