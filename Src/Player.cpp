@@ -176,6 +176,8 @@ void CPlayer::Update ()
 //
 void CPlayer::ProcessMoving ()
 {
+  bool bHasMoved = false;
+
   // Nach links?
   if (g_pFramework->KeyDown (SDLK_LEFT))
   {
@@ -185,6 +187,7 @@ void CPlayer::ProcessMoving ()
     // Animieren
     m_fAnimPhase -= 20.0f * g_pTimer->GetElapsed ();
 
+	bHasMoved = true;
   }
   // Nach rechts?
   if (g_pFramework->KeyDown (SDLK_RIGHT))
@@ -195,27 +198,30 @@ void CPlayer::ProcessMoving ()
     // Animieren
     m_fAnimPhase += 20.0f * g_pTimer->GetElapsed ();
 
+	bHasMoved = true;
   }
   
   // Nach oben?
-   if (g_pFramework->KeyDown (SDLK_UP))
+  if (g_pFramework->KeyDown (SDLK_UP))
   {
     // Spieler nach oben bewegen
     m_fYPos -= 300.0f * g_pTimer->GetElapsed ();
 
+	bHasMoved = true;
   }
 
   
   // Nach unten?
-   if (g_pFramework->KeyDown (SDLK_DOWN))
+  if (g_pFramework->KeyDown (SDLK_DOWN))
   {
     // Spieler nach unten bewegen
     m_fYPos += 300.0f * g_pTimer->GetElapsed ();
 
+	bHasMoved = true;
   }
  
   // Spieler wurde nicht bewegt
-  else
+  if (!bHasMoved)
   {
     // Animation zurück zum Ausgangspunkt
     if (m_fAnimPhase > 5.0f)
