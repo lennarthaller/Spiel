@@ -10,9 +10,8 @@
 CGame::CGame ()
 {
   m_pPlayer = NULL;
-  m_pSpriteBackground = NULL;
-  m_pSpriteAsteroid = NULL;
   m_fSpeed = 1;
+  m_bExtraAsteroid = false;
 } // Konstruktor
 
 
@@ -28,13 +27,14 @@ void CGame::Init ()
   m_pPlayer->Reset ();
 
   // Hintergrundbild (Sprite) laden
-  m_pSpriteBackground = new CSprite;
-  m_pSpriteBackground->Load ("Data/Background.bmp");
+  m_SpriteBackground.Load ("Data/Background.bmp");
 
-  // Sprite für Asteroiden laden
-  m_pSpriteAsteroid = new CSprite;
-  m_pSpriteAsteroid->Load ("Data/Asteroid.bmp", 20, 64, 64);
-  m_pSpriteAsteroid->SetColorKey (255, 0, 255);
+  // Sprite für Asteroiden laden;
+  m_SpriteAsteroidNormal.Load ("Data/Asteroid.bmp", 20, 64, 64);
+  m_SpriteAsteroidNormal.SetColorKey (255, 0, 255);
+
+  m_SpriteAsteroidExtra.Load ("Data/Ziffern.bmp", 10, 23, 32);
+  m_SpriteAsteroidExtra.SetColorKey (255, 0, 255);
 
   // Timer für Asteroiden zurücksetzen
   m_fAsteroidTimer = 0.0f;
@@ -51,7 +51,7 @@ void CGame::Init ()
 //
 void CGame::Quit ()
 {
-  cout << "\ndu hast " << m_pPlayer->GetPunkte () << " Punkte.\n" << endl;
+  cout << "\nsie haben " << m_pPlayer->GetPunkte () << " Punkte\n" << endl;
 
 	// Spieler freigeben
   if (m_pPlayer != NULL)
@@ -62,22 +62,6 @@ void CGame::Quit ()
 	m_pPlayer->Quit ();
     delete (m_pPlayer);
     m_pPlayer = NULL ;
-  }
-
-  // Hintergrundsprite freigeben
-  if (m_pSpriteBackground != NULL)
-  {
-    delete (m_pSpriteBackground);
-    m_pSpriteBackground = NULL;
-  }
-
-  // Asteroidensprite freigeben
-  if (m_pSpriteAsteroid != NULL)
-  {
-  //  delete (m_pSpriteBackground);
-  //  m_pSpriteBackground = NULL;
-    delete (m_pSpriteAsteroid);
-   m_pSpriteAsteroid = NULL;
   }
 
 } // Quit
@@ -101,7 +85,7 @@ void CGame::Run ()
     g_pFramework->Clear ();
 
     // Hintergrundbild rendern
-    m_pSpriteBackground->Render ();
+    m_SpriteBackground.Render ();
 
     // Spieler updaten und rendern
     m_pPlayer->Update ();
@@ -188,9 +172,17 @@ void CGame::SpawnAsteroids ()
     int XPos = rand()%736;
 
     // Asteroid initialisieren
-    Asteroid.Init (m_pSpriteAsteroid, static_cast<float>(XPos), -60.0f);
-
-    // Asteroid in Liste einfügen
+	if (m_bExtraAsteroid)
+	{
+		Asteroid.Init (&m_SpriteAsteroidExtra, static_cast<float>(XPos), -60.0f);
+		m_bExtraAsteroid = false;
+	}
+	else
+	{
+		Asteroid.Init (&m_SpriteAsteroidNormal, static_cast<float>(XPos), -60.0f);
+	}
+    
+	// Asteroid in Liste einfügen
     m_AsteroidList.push_back (Asteroid);
 
     // Zeitgeber wieder zurücksetzen
@@ -264,7 +256,14 @@ void CGame::CheckCollisions ()
 			ItShot->SetAlive (false);
 		
 			//Aufruf der funktion "funktion" zum zählen der punkte
+			int nAlterPStand = m_pPlayer->GetPunkte();
+			
 			m_pPlayer->ZaehlePunkte(2);
+			
+			if (nAlterPStand < 10 && m_pPlayer->GetPunkte() >= 10)
+			{
+				m_bExtraAsteroid = true;
+			}
 		  }
 		}
 	}

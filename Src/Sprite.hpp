@@ -17,8 +17,11 @@ class CSprite
     void Render      ();
     void Render      (float fFrameNumber);
     SDL_Rect GetRect () {return m_Rect;}
+	int GetNumFrames ();
 
   private:
+    CSprite(const CSprite&);
+
     SDL_Surface *m_pScreen; // Zeiger auf den Screen des Frameworks
     SDL_Surface *m_pImage;  // Das eigentliche Bild des Sprites
     SDL_Rect m_Rect;        // Rect des Sprites

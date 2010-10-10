@@ -138,3 +138,8 @@ void CSprite::Render (float fFrameNumber)
   SDL_BlitSurface (m_pImage, &m_FrameRect, m_pScreen, &m_Rect);
 
 } // Render
+
+int CSprite::GetNumFrames ()
+{
+	return m_NumFrames;
+}

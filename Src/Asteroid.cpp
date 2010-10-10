@@ -43,8 +43,10 @@ void CAsteroid::Update (float Speed)
   m_fAnimPhase += 10.0f * g_pTimer->GetElapsed ();
 
   // Prüfen, ob die Animation am Ende angelangt ist
-  if (m_fAnimPhase >= 20.0f)
-    m_fAnimPhase = m_fAnimPhase - 20.0f;
+  int NumFrames = m_pSpriteAsteroid->GetNumFrames();
+ 
+  if (m_fAnimPhase >= NumFrames)
+    m_fAnimPhase = m_fAnimPhase - NumFrames;
 
   // Deaktivieren, falls außerhalb des Bildschirms
   if (m_fYPos > 590.0f)
