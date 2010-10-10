@@ -4,12 +4,13 @@
 //
 // Aufgabe: Asteroid initialisieren
 //
-void CAsteroid::Init (CSprite *pSpriteAsteroid, float fXPos, float fYPos)
+void CAsteroid::Init (CSprite *pSpriteAsteroid, float fXPos, float fYPos, int nPunktWert)
 {
   // Zeiger auf Sprite kopieren und Koordinaten setzen
   m_pSpriteAsteroid = pSpriteAsteroid;
   m_fXPos = fXPos;
   m_fYPos = fYPos;
+  m_nPunktWert = nPunktWert;
 
   // Animation beginnt beim ersten Einzelbild
   m_fAnimPhase = 0.0f;

@@ -174,12 +174,12 @@ void CGame::SpawnAsteroids ()
     // Asteroid initialisieren
 	if (m_bExtraAsteroid)
 	{
-		Asteroid.Init (&m_SpriteAsteroidExtra, static_cast<float>(XPos), -60.0f);
+		Asteroid.Init (&m_SpriteAsteroidExtra, static_cast<float>(XPos), -60.0f, 10);
 		m_bExtraAsteroid = false;
 	}
 	else
 	{
-		Asteroid.Init (&m_SpriteAsteroidNormal, static_cast<float>(XPos), -60.0f);
+		Asteroid.Init (&m_SpriteAsteroidNormal, static_cast<float>(XPos), -60.0f, 2);
 	}
     
 	// Asteroid in Liste einfügen
@@ -258,7 +258,7 @@ void CGame::CheckCollisions ()
 			//Aufruf der funktion "funktion" zum zählen der punkte
 			int nAlterPStand = m_pPlayer->GetPunkte();
 			
-			m_pPlayer->ZaehlePunkte(2);
+			m_pPlayer->ZaehlePunkte(ItAsteroid->GetPunkteWert());
 			
 			if (nAlterPStand < 10 && m_pPlayer->GetPunkte() >= 10)
 			{
