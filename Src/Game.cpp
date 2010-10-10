@@ -290,7 +290,7 @@ void CGame::RenderAsteroids ()
 
     // Asteroid updaten
     It->Update ();
-	if (It->bLostAsteroid)
+	if (It->LostAsteroid ())
 		m_pPlayer->ZaehlePunkte(-1);
 
   }
