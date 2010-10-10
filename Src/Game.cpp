@@ -12,7 +12,7 @@ CGame::CGame ()
   m_pPlayer = NULL;
   m_pSpriteBackground = NULL;
   m_pSpriteAsteroid = NULL;
-
+  m_fSpeed = 1;
 } // Konstruktor
 
 
@@ -106,7 +106,7 @@ void CGame::Run ()
     // Spieler updaten und rendern
     m_pPlayer->Update ();
     m_pPlayer->Render ();
-	
+
     // Neue Asteroiden hinzufügen
     SpawnAsteroids ();
 
@@ -119,6 +119,10 @@ void CGame::Run ()
     // Buffer flippen
     g_pFramework->Flip ();
 
+	if (m_pPlayer->GetPunkte() > 25)
+	{
+		m_fSpeed = 1.5;
+	}
   }
 
 } // Run
@@ -292,10 +296,9 @@ void CGame::RenderAsteroids ()
     It->Render ();
 
     // Asteroid updaten
-    It->Update ();
+    It->Update (m_fSpeed);
 	if (It->LostAsteroid ())
 		m_pPlayer->ZaehlePunkte(-1);
-
   }
 
 } // RenderAsteroids

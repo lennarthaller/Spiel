@@ -30,12 +30,12 @@ void CAsteroid::Init (CSprite *pSpriteAsteroid, float fXPos, float fYPos)
 //
 // Aufgabe: Asteroid bewegen und Position prüfen
 //
-void CAsteroid::Update ()
+void CAsteroid::Update (float Speed)
 {
   m_bLostAsteroid = false;
   
   // Asteroid bewegen
-  m_fYPos += 200.0f * g_pTimer->GetElapsed ();
+  m_fYPos += 200.0f * g_pTimer->GetElapsed () * Speed;
 
   m_Rect.y = static_cast<int>(m_fYPos);
 

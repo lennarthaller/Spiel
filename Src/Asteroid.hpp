@@ -7,7 +7,7 @@ class CAsteroid
 {
   public:
     void Init     (CSprite *pSpriteAsteroid, float fXPos, float fYPos);
-    void Update   ();
+    void Update   (float Speed);
     void Render   ();
     bool IsAlive  () {return m_bIsAlive;}
     void SetAlive (bool bIsAlive) {m_bIsAlive = bIsAlive;}
@@ -22,7 +22,6 @@ class CAsteroid
     float    m_fAnimPhase;      // Akt. Animationsphase des Asteroiden
     bool     m_bIsAlive;        // "Lebt" der Asteroid noch?
     SDL_Rect m_Rect;            // Rect des Asteroiden
-
 };
 
 #endif
