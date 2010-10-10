@@ -56,7 +56,10 @@ void CGame::Quit ()
 	// Spieler freigeben
   if (m_pPlayer != NULL)
   {
-    m_pPlayer->Quit ();
+
+	m_AsteroidList.clear ();
+   
+	m_pPlayer->Quit ();
     delete (m_pPlayer);
     m_pPlayer = NULL ;
   }
