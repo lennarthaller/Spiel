@@ -1,6 +1,16 @@
 #include <list>
 #include "Sprite.hpp"
 
+class CZifferSprite
+{
+public:
+	CZifferSprite (int nZiffer, int Position_x, int Position_y);
+	void Render ();
+private:
+	int m_nZiffer;
+	CSprite m_Sprite;
+};
+
 class CNumberDisplay
 {
 public:
@@ -10,6 +20,7 @@ public:
 	void Render ();
 
 private:
-	std::list<CSprite*> m_ZifferSprites;
+	std::list<CZifferSprite*> m_ZifferSprites;
 	int m_Position_x, m_Position_y;
 };
+

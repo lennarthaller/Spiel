@@ -1,6 +1,19 @@
 #include <iostream>
 #include "NumberDisplay.hpp"
 
+CZifferSprite::CZifferSprite (int nZiffer, int Position_x, int Position_y)
+{
+	m_nZiffer = nZiffer;
+	m_Sprite.Load("Data/ziffern.bmp", 10, 23, 32);
+	m_Sprite.SetColorKey (255, 0, 255);
+	m_Sprite.SetPos      (Position_x, Position_y);
+}
+
+void CZifferSprite::Render ()
+{
+	m_Sprite.Render (m_nZiffer);
+}
+
 CNumberDisplay::CNumberDisplay ()
 {
 	m_Position_x = -1;
@@ -10,7 +23,7 @@ CNumberDisplay::CNumberDisplay ()
 
 void CNumberDisplay::SetNumber(int Number)
 {	
-	for (std::list<CSprite*>::iterator it = m_ZifferSprites.begin(); it != m_ZifferSprites.end(); it++)
+	for (std::list<CZifferSprite*>::iterator it = m_ZifferSprites.begin(); it != m_ZifferSprites.end(); it++)
 	{
 		delete *it;
 	}
@@ -31,10 +44,7 @@ void CNumberDisplay::SetNumber(int Number)
 
 		Position_x -= 23;
 
-		CSprite *sprite = new CSprite;
-		sprite->Load("Data/ziffern.bmp", 10, 23, 32);
-	    sprite->SetColorKey (255, 0, 255);
-		sprite->SetPos      (Position_x, m_Position_y);
+		CZifferSprite *sprite = new CZifferSprite(nZiffer, Position_x, m_Position_y);
 
 		m_ZifferSprites.push_front(sprite);
 
@@ -51,8 +61,8 @@ void CNumberDisplay::SetScreenPosition(int x, int y)
 
 void CNumberDisplay::Render ()
 {
-	for (std::list<CSprite*>::iterator it = m_ZifferSprites.begin(); it != m_ZifferSprites.end(); it++)
+	for (std::list<CZifferSprite*>::iterator it = m_ZifferSprites.begin(); it != m_ZifferSprites.end(); it++)
 	{
-		(*it)->Render(0);
+		(*it)->Render();
 	}
 }
