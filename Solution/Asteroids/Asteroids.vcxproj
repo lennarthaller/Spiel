@@ -103,12 +103,6 @@
     <ClCompile Include="..\..\Src\Sprite.cpp" />
     <ClCompile Include="..\..\Src\Timer.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\Data\Asteroid.bmp" />
-    <None Include="..\..\Data\Background.bmp" />
-    <None Include="..\..\Data\Laser.bmp" />
-    <None Include="..\..\Data\Player.bmp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

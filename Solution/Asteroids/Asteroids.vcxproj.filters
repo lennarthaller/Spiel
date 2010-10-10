@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Ressourcendateien">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Src\Asteroid.hpp">
@@ -77,19 +73,5 @@
     <ClCompile Include="..\..\Src\NumberDisplay.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\Data\Asteroid.bmp">
-      <Filter>Ressourcendateien</Filter>
-    </None>
-    <None Include="..\..\Data\Background.bmp">
-      <Filter>Ressourcendateien</Filter>
-    </None>
-    <None Include="..\..\Data\Laser.bmp">
-      <Filter>Ressourcendateien</Filter>
-    </None>
-    <None Include="..\..\Data\Player.bmp">
-      <Filter>Ressourcendateien</Filter>
-    </None>
   </ItemGroup>
 </Project>
