@@ -39,6 +39,7 @@ class CPlayer
 	CPunkte m_Punkte;
 	CNumberDisplay m_PunkteDisplay;
 	CNumberDisplay m_LebenDisplay;
+	int m_nTimeStampOfExplosion;
 };
 
 #endif

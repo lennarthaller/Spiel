@@ -8,6 +8,7 @@ CPlayer::CPlayer ()
 {
   m_pSpritePlayer = NULL;
   m_pSpriteShot = NULL;
+  m_nTimeStampOfExplosion = -1;
 
 } // Konstruktor
 
@@ -27,7 +28,7 @@ void CPlayer::Init ()
   // Spielersprite erstellen
   m_pSpritePlayer = new CSprite;
 
-  m_pSpritePlayer->Load ("Data/Player.bmp", 11, 64,64);
+  m_pSpritePlayer->Load ("Data/Player.bmp", 12, 64,64);
   m_pSpritePlayer->SetColorKey (255, 0, 255);
 
   // Schuss-Sprite erstellen
@@ -87,6 +88,8 @@ SDL_Rect CPlayer::GetRect ()
 
 bool CPlayer::SpielerGetroffen ()
 {
+  m_nTimeStampOfExplosion = SDL_GetTicks();
+
   m_nLeben --;
   
   m_LebenDisplay.SetNumber(m_nLeben);
@@ -117,7 +120,21 @@ void CPlayer::Render ()
 {
   // Position des Spielers setzen und Sprite rendern
   m_pSpritePlayer->SetPos (m_fXPos, m_fYPos);
-  m_pSpritePlayer->Render (m_fAnimPhase);
+  if (m_nTimeStampOfExplosion != -1)
+  {
+	  int nVergangeneZeit = SDL_GetTicks() - m_nTimeStampOfExplosion;
+	 
+	  if (nVergangeneZeit > 500)
+	  {  
+		m_nTimeStampOfExplosion = -1;
+	  }
+	 m_pSpritePlayer->Render (11);
+	 
+  }
+  else
+  {
+	  m_pSpritePlayer->Render (m_fAnimPhase);
+  }
  
   m_PunkteDisplay.Render ();
   m_LebenDisplay.Render ();
