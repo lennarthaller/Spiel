@@ -121,6 +121,16 @@ void CGame::Run ()
 	{
 		m_fSpeed = 1.5;
 	}
+
+	if (m_pPlayer->GetPunkte() > 50)
+	{
+		m_fSpeed = 1.8;
+	}
+
+	if (m_pPlayer->GetPunkte() > 70)
+	{
+		m_fSpeed = 2.0;
+	}
   }
 
 } // Run
