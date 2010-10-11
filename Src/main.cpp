@@ -60,12 +60,12 @@ int main (int argc, char *argv[])
 			
 			ifstream Input ("Highscore.hsc", ios::binary);
 			if (Input == NULL) {
-					cout << "Datei konnte nicht geoefnet werden" << endl;
+					cout << "Es gibt noch keinen Highscore" << endl;
 			} else {
 				Input.read ((char*) &highscore, sizeof (highscore));
 				Input.close ();
-				cout << "Der Highscore ist: ";
-				cout << highscore << endl;
+				cout << "\nDer Highscore ist: ";
+				cout << highscore << endl << endl;
 			}
 		} break;
 

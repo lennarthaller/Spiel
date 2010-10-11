@@ -1,7 +1,7 @@
 
 
 #include "Game.hpp"
-
+#include <fstream>
 
 // Konstruktor
 //
@@ -51,7 +51,21 @@ void CGame::Init ()
 //
 void CGame::Quit ()
 {
-  cout << "\nsie haben " << m_pPlayer->GetPunkte () << " Punkte\n" << endl;
+	int nPunkte = m_pPlayer->GetPunkte ();
+	int nHighscore = 0;
+	
+	ifstream Input ("Highscore.hsc", ios::binary);
+	Input.read ((char*) &nHighscore, sizeof (nHighscore));
+	Input.close ();
+	
+	if (nPunkte > nHighscore)
+	{
+		ofstream Output ("Highscore.hsc", ios::binary);
+		Output.write ((char*) &nPunkte, sizeof (nPunkte));
+		Output.close ();
+	}
+  
+	cout << "\nsie haben " << m_pPlayer->GetPunkte () << " Punkte\n" << endl;
 
 	// Spieler freigeben
   if (m_pPlayer != NULL)
