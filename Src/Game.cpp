@@ -288,6 +288,28 @@ void CGame::CheckCollisions ()
 			{
 				m_bExtraAsteroid = true;
 			}
+
+			
+			if (nAlterPStand < 20 && m_pPlayer->GetPunkte() >= 20)
+			{
+				m_bExtraAsteroid = true;
+			}
+
+				if (nAlterPStand < 30 && m_pPlayer->GetPunkte() >= 30)
+			{
+				m_bExtraAsteroid = true;
+			}
+
+				if (nAlterPStand < 40 && m_pPlayer->GetPunkte() >= 40)
+			{
+				m_bExtraAsteroid = true;
+			}
+
+				if (nAlterPStand < 50 && m_pPlayer->GetPunkte() >= 50)
+			{
+				m_bExtraAsteroid = true;
+			}
+
 		  }
 		}
 	}
