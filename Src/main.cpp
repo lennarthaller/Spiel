@@ -21,13 +21,15 @@ int main (int argc, char *argv[])
   // bis das Spiel geschlossen oder die Escape-Taste
   // gedrückt wird
    int highscore = 0;
-  	
+   int nKeinePunkte = 0;
+
 	do
 	{
 	cout << "Asteroids - Menue" << endl;
 	cout << "-----------------" << endl;
 	cout << "(N)eus Spiel starten" << endl;
 	cout << "(H)ighscore anzeigen" << endl;
+	cout << "(L)Highscore loeschen" << endl;
 	cout << "(I)nfo" << endl;
 	cout << "(B)eenden\n\n";
 //Abfrage
@@ -75,8 +77,15 @@ int main (int argc, char *argv[])
 			cout << "Copyright Lennart Haller\n\n";
 					} break;
 		
-		
-		
+		case ('L'):
+		case ('l'): {
+
+			ifstream Input ("Highscore.hsc", ios::binary);
+			ofstream Output ("Highscore.hsc", ios::binary);
+			Output.write ((char*) &nKeinePunkte, sizeof (nKeinePunkte));
+			Output.close ();
+			cout << "\nHighscore geloescht\n" << endl;
+					} break;
 		
 		default:
 
