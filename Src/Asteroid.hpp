@@ -7,7 +7,7 @@ class CAsteroid
 {
   public:
     void Init     (CSprite *pSpriteAsteroid, float fXPos, float fYPos, int nPunktWert);
-    void Update   (float Speed);
+    void Update   (float XSpeed, float YSpeed);
     void Render   ();
     bool IsAlive  () {return m_bIsAlive;}
     void SetAlive (bool bIsAlive) {m_bIsAlive = bIsAlive;}

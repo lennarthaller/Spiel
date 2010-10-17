@@ -10,7 +10,8 @@
 CGame::CGame ()
 {
   m_pPlayer = NULL;
-  m_fSpeed = 1;
+  m_fXSpeed = 0;
+  m_fYSpeed = 1;
   m_bExtraAsteroid = false;
 } // Konstruktor
 
@@ -28,9 +29,12 @@ void CGame::Init ()
 
   // Hintergrundbild (Sprite) laden
   m_SpriteBackground.Load ("Data/Background.bmp");
+ //m_SpriteBackground.Load ("Data/Black.bmp");
 
   // Sprite für Asteroiden laden;
+
   m_SpriteAsteroidNormal.Load ("Data/Asteroid.bmp", 20, 64, 64);
+//  m_SpriteAsteroidNormal.Load ("Data/AsteroidMagenta.bmp", 20, 30, 30);
   m_SpriteAsteroidNormal.SetColorKey (255, 0, 255);
 
   m_SpriteAsteroidExtra.Load ("Data/Ziffern.bmp", 10, 23, 32);
@@ -117,19 +121,45 @@ void CGame::Run ()
     // Buffer flippen
     g_pFramework->Flip ();
 
-	if (m_pPlayer->GetPunkte() > 25)
+	if (m_pPlayer->GetPunkte() > 5)
 	{
-		m_fSpeed = 1.5;
+		m_fXSpeed = 0.2;
 	}
+
+	if (m_pPlayer->GetPunkte() > 10)
+	{
+		m_fXSpeed = 0.4;
+	}
+
+		if (m_pPlayer->GetPunkte() > 15)
+	{
+		m_fYSpeed = 1.2;
+		m_fXSpeed = 0.6;
+	}
+
+
+		if (m_pPlayer->GetPunkte() > 20)
+	{
+		m_fYSpeed = 1.5;
+		m_fXSpeed = 0.8;
+	}
+
+
+		if (m_pPlayer->GetPunkte() > 25)
+	{
+		m_fYSpeed = 1.7;
+		m_fXSpeed = 1.0;
+	}
+
 
 	if (m_pPlayer->GetPunkte() > 50)
 	{
-		m_fSpeed = 1.8;
+		m_fYSpeed = 1.8;
 	}
 
 	if (m_pPlayer->GetPunkte() > 70)
 	{
-		m_fSpeed = 2.0;
+		m_fYSpeed = 2.0;
 	}
   }
 
@@ -341,7 +371,7 @@ void CGame::RenderAsteroids ()
     It->Render ();
 
     // Asteroid updaten
-    It->Update (m_fSpeed);
+    It->Update (m_fXSpeed, m_fYSpeed);
 	if (It->LostAsteroid ())
 		m_pPlayer->ZaehlePunkte(-1);
   }
