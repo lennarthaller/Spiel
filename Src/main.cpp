@@ -21,7 +21,6 @@ int main (int argc, char *argv[])
   // bis das Spiel geschlossen oder die Escape-Taste
   // gedrückt wird
    int highscore = 0;
-   int nKeinePunkte = 0;
 
 	do
 	{
@@ -79,14 +78,38 @@ int main (int argc, char *argv[])
 		
 		case ('L'):
 		case ('l'): {
+			
+		    int nKeinePunkte = 0;
+			char JaNein;
 
-			ifstream Input ("Highscore.hsc", ios::binary);
+			cout << "\nSoll der Highscore wirklich geloescht werden?" << endl;
+			cout << "(J)a" << endl;
+			cout << "(N)ein" << endl;
+		    cin >> 	JaNein;
+
+			if ((JaNein == 'J') || (JaNein == 'j'))
+				{
 			ofstream Output ("Highscore.hsc", ios::binary);
 			Output.write ((char*) &nKeinePunkte, sizeof (nKeinePunkte));
 			Output.close ();
 			cout << "\nHighscore geloescht\n" << endl;
-					} break;
-		
+				}
+			
+			if ((JaNein == 'N') || (JaNein == 'n'))
+			{
+				cout << "\nHighscore wurde nicht geloescht" << endl << endl;
+			}
+
+			else
+			{
+				cout << "\nFalsche Eingabe" << endl << endl; 
+			}
+			
+	
+			
+			
+			} break;
+			
 		default:
 
 	{
