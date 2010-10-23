@@ -22,6 +22,9 @@ class CPlayer
 	bool SpielerGetroffen ();
 	void ZaehlePunkte (int nPunkte);
 	int GetPunkte ();
+	void SetTreffer ();
+	int GetnTreffer () {return m_nTreffer;}
+	int GetnDanebengeschossen () {return m_nDanebengeschossen;}
 
   private:
     void ProcessMoving   ();
@@ -40,6 +43,9 @@ class CPlayer
 	CNumberDisplay m_PunkteDisplay;
 	CNumberDisplay m_LebenDisplay;
 	int m_nTimeStampOfExplosion;
+
+	int      m_nTreffer;
+	int		 m_nDanebengeschossen;
 };
 
 #endif

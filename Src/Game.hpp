@@ -4,7 +4,6 @@
 #include "Player.hpp"
 #include "Asteroid.hpp"
 
-//int punkte = 0;
 
 class CGame
 {
@@ -15,6 +14,7 @@ class CGame
     void Run  ();
     void Quit ();
 	void testepunkte();
+	void ZaeleDanebenGeschossen ();
 
   private:
     void ProcessEvents   ();
@@ -32,6 +32,7 @@ class CGame
 	float    m_fXAsteroidSpeed;
 	float    m_fYAsteroidSpeed;
 	bool     m_bExtraAsteroid;
+	
 
 };
 

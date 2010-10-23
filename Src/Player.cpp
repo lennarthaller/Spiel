@@ -9,7 +9,8 @@ CPlayer::CPlayer ()
   m_pSpritePlayer = NULL;
   m_pSpriteShot = NULL;
   m_nTimeStampOfExplosion = -1;
-
+  m_nTreffer = 0;
+  m_nDanebengeschossen = 0;
 } // Konstruktor
 
 
@@ -19,6 +20,7 @@ CPlayer::CPlayer ()
 //
 void CPlayer::Init ()
 {
+  m_nTreffer = 0;
 	m_nLeben = 3;
 	m_LebenDisplay.SetScreenPosition(89, 20);
 	m_LebenDisplay.SetNumber(m_nLeben);
@@ -112,6 +114,11 @@ int CPlayer::GetPunkte ()
 	return m_Punkte.GetPunkte ();
 }
 
+void CPlayer::SetTreffer ()
+{
+	m_nTreffer ++;
+}
+
 // Render
 //
 // Aufgabe: Spieler und Schüsse rendern
@@ -149,7 +156,10 @@ void CPlayer::Render ()
     it->Update ();
 
 	if (it->bWastedShot)
+	{
 		ZaehlePunkte (-10);
+		m_nDanebengeschossen ++;
+	}
 
     // Ist der Schuss noch aktiv?
     if (it->IsAlive ())

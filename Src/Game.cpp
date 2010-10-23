@@ -57,21 +57,40 @@ void CGame::Quit ()
 {
 	int nPunkte = m_pPlayer->GetPunkte ();
 	int nHighscore = 0;
-	
+	float nTreffer = m_pPlayer->GetnTreffer ();
+	float nDanebengeschossen = m_pPlayer->GetnDanebengeschossen ();
+	int fTrefferquote = nTreffer / (nTreffer + nDanebengeschossen) * 100;
+
 	ifstream Input ("Highscore.hsc", ios::binary);
 	Input.read ((char*) &nHighscore, sizeof (nHighscore));
 	Input.close ();
+
+/*	
+	ifstream Input ("Daneben.dnb", ios::binary);
+	Input.read ((char*) &nDanebengeschossen, sizeof (nDanebengeschossen));
+	Input.close ();
+
 	
+	ifstream Input ("Treffer.trf", ios::binary);
+	Input.read ((char*) &nTreffer, sizeof (nTreffer));
+	Input.close ();
+*/	
 	if (nPunkte > nHighscore)
 	{
 		ofstream Output ("Highscore.hsc", ios::binary);
 		Output.write ((char*) &nPunkte, sizeof (nPunkte));
 		Output.close ();
-		cout << "\nsie haben mit " << m_pPlayer->GetPunkte () << " Punkten einen neuen Highscore!\n" << endl;
+		cout << "\nSie haben mit " << m_pPlayer->GetPunkte () << " Punkten einen neuen Highscore!\n" << endl;
 	}
-	
+	  
 	else
-	cout << "\nsie haben " << m_pPlayer->GetPunkte () << " Punkte\n" << endl;
+	{
+		cout << "\nSie haben " << m_pPlayer->GetPunkte () << " Punkte\n" << endl;
+	}
+
+	cout << "Sie haben " << nTreffer << " Asteroiden abgeschossen\n";
+	cout << "Sie haben " << nDanebengeschossen << " mal daneben geschossen\n";
+	cout << "Die Trefferquote ist: " << fTrefferquote << "%\n\n";
 
 
 	// Spieler freigeben
@@ -320,7 +339,9 @@ void CGame::CheckCollisions ()
 			ItAsteroid->SetAlive (false);
 			ItShot->SetAlive (false);
 		
-			//Aufruf der funktion "funktion" zum zählen der punkte
+
+			m_pPlayer->SetTreffer();
+			
 			int nAlterPStand = m_pPlayer->GetPunkte();
 			
 			m_pPlayer->ZaehlePunkte(ItAsteroid->GetPunkteWert());
