@@ -6,8 +6,9 @@
 class CAsteroid
 {
   public:
-    void Init     (CSprite *pSpriteAsteroid, float fXPos, float fYPos, int nPunktWert);
-    void Update   (float XSpeed, float YSpeed);
+    void Init     (CSprite *pSpriteAsteroid, float fXPos, float fYPos, int nPunktWert, float fXSpeed, float fYSpeed, int XRichtung, int YRichtung);
+  //  void Update   (float XSpeed, float YSpeed, int YRichtungWechsel, int XRichtungWechsel);
+    void Update   ();
     void Render   ();
     bool IsAlive  () {return m_bIsAlive;}
     void SetAlive (bool bIsAlive) {m_bIsAlive = bIsAlive;}
@@ -24,6 +25,10 @@ class CAsteroid
     bool     m_bIsAlive;        // "Lebt" der Asteroid noch?
     SDL_Rect m_Rect;            // Rect des Asteroiden
 	int      m_nPunktWert;
+	float	 m_fXSpeed;
+	float	 m_fYSpeed;
+	int		 m_nXRichtung;
+	int		 m_nYRichtung;
 };
 
 #endif

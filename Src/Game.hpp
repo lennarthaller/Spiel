@@ -29,8 +29,8 @@ class CGame
     float    m_fAsteroidTimer;      // Zeitgeber für nächsten Asteroiden
     bool     m_bGameRun;            // Läuft das Spiel noch?
     list<CAsteroid> m_AsteroidList; // Liste der Asteroiden
-	float    m_fXSpeed;
-	float    m_fYSpeed;
+	float    m_fXAsteroidSpeed;
+	float    m_fYAsteroidSpeed;
 	bool     m_bExtraAsteroid;
 
 };
