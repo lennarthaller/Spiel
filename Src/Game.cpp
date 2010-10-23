@@ -10,8 +10,8 @@
 CGame::CGame ()
 {
   m_pPlayer = NULL;
-  m_fXSpeed = 0;
-  m_fYSpeed = 1;
+  m_fXAsteroidSpeed = 0;
+  m_fYAsteroidSpeed = 1;
   m_bExtraAsteroid = false;
 } // Konstruktor
 
@@ -67,9 +67,12 @@ void CGame::Quit ()
 		ofstream Output ("Highscore.hsc", ios::binary);
 		Output.write ((char*) &nPunkte, sizeof (nPunkte));
 		Output.close ();
+		cout << "\nsie haben mit " << m_pPlayer->GetPunkte () << " Punkten einen neuen Highscore!\n" << endl;
 	}
-  
+	
+	else
 	cout << "\nsie haben " << m_pPlayer->GetPunkte () << " Punkte\n" << endl;
+
 
 	// Spieler freigeben
   if (m_pPlayer != NULL)
@@ -120,49 +123,49 @@ void CGame::Run ()
 
     // Buffer flippen
     g_pFramework->Flip ();
-
+/*
 	if (m_pPlayer->GetPunkte() > 5)
 	{
-		m_fXSpeed = 0.2;
+		m_fXAsteroidSpeed = 0.2f;
 	}
 
 	if (m_pPlayer->GetPunkte() > 10)
 	{
-		m_fXSpeed = 0.4;
+		m_fXAsteroidSpeed = 0.4f;
 	}
 
 		if (m_pPlayer->GetPunkte() > 15)
 	{
-		m_fYSpeed = 1.2;
-		m_fXSpeed = 0.6;
+		m_fYAsteroidSpeed = 1.2f;
+		m_fXAsteroidSpeed = 0.6f;
 	}
 
 
 		if (m_pPlayer->GetPunkte() > 20)
 	{
-		m_fYSpeed = 1.5;
-		m_fXSpeed = 0.8;
+		m_fYAsteroidSpeed = 1.5f;
+		m_fXAsteroidSpeed = 0.8f;
 	}
 
 
 		if (m_pPlayer->GetPunkte() > 25)
 	{
-		m_fYSpeed = 1.7;
-		m_fXSpeed = 1.0;
+		m_fYAsteroidSpeed = 1.7f;
+		m_fXAsteroidSpeed = 1.0f;
 	}
 
 
 	if (m_pPlayer->GetPunkte() > 50)
 	{
-		m_fYSpeed = 1.8;
+		m_fYAsteroidSpeed = 1.8f;
 	}
 
 	if (m_pPlayer->GetPunkte() > 70)
 	{
-		m_fYSpeed = 2.0;
+		m_fYAsteroidSpeed = 2.0f;
 	}
+*/
   }
-
 } // Run
 
 
@@ -225,15 +228,23 @@ void CGame::SpawnAsteroids ()
     // Zufällige X-Position
     int XPos = rand()%736;
 
+	float fXSpeed = (rand()%30 +1) /20;
+	float fYSpeed = (rand()%30 +1) /20;
+	int YRichtung = rand()%3 -1;
+	if (YRichtung == 0)
+	{
+		YRichtung = -1;
+	}
+
     // Asteroid initialisieren
 	if (m_bExtraAsteroid)
 	{
-		Asteroid.Init (&m_SpriteAsteroidExtra, static_cast<float>(XPos), -60.0f, 10);
+		Asteroid.Init (&m_SpriteAsteroidExtra, static_cast<float>(XPos), -60.0f, 10, fXSpeed, fYSpeed, 1, YRichtung);
 		m_bExtraAsteroid = false;
 	}
 	else
 	{
-		Asteroid.Init (&m_SpriteAsteroidNormal, static_cast<float>(XPos), -60.0f, 2);
+		Asteroid.Init (&m_SpriteAsteroidNormal, static_cast<float>(XPos), -60.0f, 2, fXSpeed, fYSpeed, 1, YRichtung);
 	}
     
 	// Asteroid in Liste einfügen
@@ -371,7 +382,9 @@ void CGame::RenderAsteroids ()
     It->Render ();
 
     // Asteroid updaten
-    It->Update (m_fXSpeed, m_fYSpeed);
+
+   // It->Update (m_fXAsteroidSpeed, m_fYAsteroidSpeed, 1, 1);
+	It->Update ();
 	if (It->LostAsteroid ())
 		m_pPlayer->ZaehlePunkte(-1);
   }
