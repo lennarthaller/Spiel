@@ -25,6 +25,14 @@ class CFramework : public TSingleton<CFramework>
     SDL_Surface *m_pScreen;   // Surface für den Screen
     Uint8       *m_pKeystate; // Array für aktuellen Tastaturstatus
 
+  //The music that will be played 
+ // Mix_Music *m_pMusik; 
+  
+  //The sound effects that will be used
+ // Mix_Chunk *m_phigh;
+//  Mix_Chunk *m_pmed;
+ // Mix_Chunk *m_plow;
+
 };
 
 #endif
