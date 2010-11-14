@@ -28,17 +28,17 @@ void CGame::Init ()
   m_pPlayer->Reset ();
 
   // Hintergrundbild (Sprite) laden
-  m_SpriteBackground.Load ("Data/Background.bmp");
- //m_SpriteBackground.Load ("Data/Black.bmp");
+ // m_SpriteBackground.Load ("Data/Background.bmp");
+ m_SpriteBackground.Load ("Data/Black.bmp");
 
   // Sprite für Asteroiden laden;
 
-  m_SpriteAsteroidNormal.Load ("Data/Asteroid.bmp", 20, 64, 64);
-//  m_SpriteAsteroidNormal.Load ("Data/AsteroidMagenta.bmp", 20, 30, 30);
-  m_SpriteAsteroidNormal.SetColorKey (255, 0, 255);
+//  m_SpriteAsteroidNormal.Load ("Data/Asteroid.bmp", 20, 64, 64);
+  m_SpriteAsteroidNormal.Load ("Data/AsteroidKugeln.bmp", 20, 50, 50);
+  m_SpriteAsteroidNormal.SetColorKey (0, 0, 0);
 
-  m_SpriteAsteroidExtra.Load ("Data/Ziffern.bmp", 10, 23, 32);
-  m_SpriteAsteroidExtra.SetColorKey (255, 0, 255);
+  m_SpriteAsteroidExtra.Load ("Data/AsteroidRingeSchneller.bmp", 10, 30, 30);
+  m_SpriteAsteroidExtra.SetColorKey (0, 0, 0);
 
   // Timer für Asteroiden zurücksetzen
   m_fAsteroidTimer = 0.0f;
@@ -59,7 +59,7 @@ void CGame::Quit ()
 	int nHighscore = 0;
 	float nTreffer = m_pPlayer->GetnTreffer ();
 	float nDanebengeschossen = m_pPlayer->GetnDanebengeschossen ();
-	int fTrefferquote = nTreffer / (nTreffer + nDanebengeschossen) * 100;
+	int nTrefferquote = nTreffer / (nTreffer + nDanebengeschossen) * 100;
 
 	ifstream Input ("Highscore.hsc", ios::binary);
 	Input.read ((char*) &nHighscore, sizeof (nHighscore));
@@ -90,7 +90,7 @@ void CGame::Quit ()
 
 	cout << "Sie haben " << nTreffer << " Asteroiden abgeschossen\n";
 	cout << "Sie haben " << nDanebengeschossen << " mal daneben geschossen\n";
-	cout << "Die Trefferquote ist: " << fTrefferquote << "%\n\n";
+	cout << "Die Trefferquote ist: " << nTrefferquote << "%\n\n";
 
 
 	// Spieler freigeben
@@ -142,48 +142,7 @@ void CGame::Run ()
 
     // Buffer flippen
     g_pFramework->Flip ();
-/*
-	if (m_pPlayer->GetPunkte() > 5)
-	{
-		m_fXAsteroidSpeed = 0.2f;
-	}
 
-	if (m_pPlayer->GetPunkte() > 10)
-	{
-		m_fXAsteroidSpeed = 0.4f;
-	}
-
-		if (m_pPlayer->GetPunkte() > 15)
-	{
-		m_fYAsteroidSpeed = 1.2f;
-		m_fXAsteroidSpeed = 0.6f;
-	}
-
-
-		if (m_pPlayer->GetPunkte() > 20)
-	{
-		m_fYAsteroidSpeed = 1.5f;
-		m_fXAsteroidSpeed = 0.8f;
-	}
-
-
-		if (m_pPlayer->GetPunkte() > 25)
-	{
-		m_fYAsteroidSpeed = 1.7f;
-		m_fXAsteroidSpeed = 1.0f;
-	}
-
-
-	if (m_pPlayer->GetPunkte() > 50)
-	{
-		m_fYAsteroidSpeed = 1.8f;
-	}
-
-	if (m_pPlayer->GetPunkte() > 70)
-	{
-		m_fYAsteroidSpeed = 2.0f;
-	}
-*/
   }
 } // Run
 

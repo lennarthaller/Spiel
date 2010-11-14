@@ -8,7 +8,7 @@ void CShot::Init (CSprite *pSpriteShot, float fXPos, float fYPos)
 {
   // Zeiger auf Sprite kopieren und Koordinaten setzen
   m_pSpriteShot = pSpriteShot;
-  m_fXPos = fXPos;
+  m_fXPos = fXPos + 20;
   m_fYPos = fYPos;
 
   // Rect initialisieren
@@ -32,7 +32,7 @@ void CShot::Update ()
   
   bWastedShot = false;
   // Schuss bewegen
-  m_fYPos -= 400.0f * g_pTimer->GetElapsed ();
+  m_fYPos -= 600.0f * g_pTimer->GetElapsed ();
 
   m_Rect.y = static_cast<int>(m_fYPos);
 

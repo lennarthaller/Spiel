@@ -36,8 +36,8 @@ void CPlayer::Init ()
   // Schuss-Sprite erstellen
   m_pSpriteShot = new CSprite;
 
-  m_pSpriteShot->Load ("Data/Laser.bmp", 0, 64, 64);
-  m_pSpriteShot->SetColorKey (255, 0, 255);
+  m_pSpriteShot->Load ("Data/Laser2.bmp", 0, 20, 20);
+  m_pSpriteShot->SetColorKey (0, 0, 0);
 
 } // Init
 
