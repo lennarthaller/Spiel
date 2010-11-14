@@ -2,6 +2,7 @@
 #define TIMER_HPP
 
 #include <SDL.h>
+//#include "SDL_mixer.h"
 #include "singleton.hpp"
 
 #define g_pTimer CTimer::Get ()

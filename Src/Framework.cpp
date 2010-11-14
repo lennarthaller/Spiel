@@ -7,6 +7,8 @@
 bool CFramework::Init (int ScreenWidth, int ScreenHeight,
                        int ColorDepth, bool bFullscreen)
 {
+
+
   // Alle Systeme der SDL initialisieren
   if (SDL_Init (SDL_INIT_VIDEO | SDL_INIT_TIMER) == -1 )
   {
@@ -17,7 +19,25 @@ bool CFramework::Init (int ScreenWidth, int ScreenHeight,
 
     return (false);
   }
+/*
+  //SDL_mixer initialisieren
 
+  //The music that will be played 
+  Mix_Music *m_pMusik = NULL; 
+  
+  //The sound effects that will be used
+  Mix_Chunk *scratch = NULL;
+  Mix_Chunk *high = NULL;
+  Mix_Chunk *med = NULL;
+  Mix_Chunk *low = NULL; 
+
+  if( Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 )
+  {
+    cout << "Mixer funktionirt nicht!" << endl;
+	return false; 
+  } 
+  //
+*/
   // Vollbild oder Fenstermodus einstellen
   if (bFullscreen == true)
   {
