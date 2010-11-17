@@ -32,6 +32,7 @@ class CGame
 	float    m_fXAsteroidSpeed;
 	float    m_fYAsteroidSpeed;
 	bool     m_bExtraAsteroid;
+	int		 m_nLevel;
 	
 
 };

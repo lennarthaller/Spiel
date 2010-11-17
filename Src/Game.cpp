@@ -45,6 +45,7 @@ void CGame::Init ()
 
   // Spiel läuft
   m_bGameRun = true;
+  m_nLevel = 1;
 
 } // Init
 
@@ -91,6 +92,7 @@ void CGame::Quit ()
 	cout << "Sie haben " << nTreffer << " Asteroiden abgeschossen\n";
 	cout << "Sie haben " << nDanebengeschossen << " mal daneben geschossen\n";
 	cout << "Die Trefferquote ist: " << nTrefferquote << "%\n\n";
+	cout << "das level ist: " << m_nLevel << "%\n\n";
 
 
 	// Spieler freigeben
@@ -193,12 +195,38 @@ void CGame::ProcessEvents ()
 //
 void CGame::SpawnAsteroids ()
 {
-  // Timer für nächsten Asteroiden erhöhen
+	float fAsteroidenSpawnTime = 0;
+	float fXSpeed = 0;
+	float fYSpeed = 1;
+	int YRichtung = 1;
+	// Timer für nächsten Asteroiden erhöhen
   m_fAsteroidTimer += g_pTimer->GetElapsed ();
 
   // Wenn eine halbe Sekunde vergangen ist,
   // dann einen neuen Asteroiden erzeugen
-  if (m_fAsteroidTimer >= 0.5f)
+ 
+	switch (m_nLevel){
+	
+		case (1): 
+			{
+				fAsteroidenSpawnTime = 0.7f;  
+			} break;
+
+		case (2):
+			{
+				fAsteroidenSpawnTime = 0.5f;
+				
+				fXSpeed = (rand()%30 +1) /20;
+				fYSpeed = (rand()%30 +1) /20;
+				int YRichtung = rand()%3 -1;
+				if (YRichtung == 0)
+					{
+					YRichtung = -1;
+					}
+			} break;
+	}
+
+  if (m_fAsteroidTimer >= fAsteroidenSpawnTime)
   {
     // Neuer Asteroid
     CAsteroid Asteroid;
@@ -206,13 +234,7 @@ void CGame::SpawnAsteroids ()
     // Zufällige X-Position
     int XPos = rand()%736;
 
-	float fXSpeed = (rand()%30 +1) /20;
-	float fYSpeed = (rand()%30 +1) /20;
-	int YRichtung = rand()%3 -1;
-	if (YRichtung == 0)
-	{
-		YRichtung = -1;
-	}
+
 
     // Asteroid initialisieren
 	if (m_bExtraAsteroid)
@@ -308,6 +330,7 @@ void CGame::CheckCollisions ()
 			if (nAlterPStand < 10 && m_pPlayer->GetPunkte() >= 10)
 			{
 				m_bExtraAsteroid = true;
+				m_nLevel = 2;
 			}
 
 			

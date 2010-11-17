@@ -40,7 +40,7 @@ void CShot::Update ()
   if (m_fYPos < -15.0f)
   {
 	m_bIsAlive = false;
-	bWastedShot = true;
+	//bWastedShot = true;
   }
 
 } // Update
