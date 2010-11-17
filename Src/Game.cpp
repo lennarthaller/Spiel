@@ -198,7 +198,7 @@ void CGame::SpawnAsteroids ()
 	float fAsteroidenSpawnTime = 0;
 	float fXSpeed = 0;
 	float fYSpeed = 1;
-	int YRichtung = 1;
+	int XRichtung = 1;
 	// Timer für nächsten Asteroiden erhöhen
   m_fAsteroidTimer += g_pTimer->GetElapsed ();
 
@@ -214,15 +214,34 @@ void CGame::SpawnAsteroids ()
 
 		case (2):
 			{
-				fAsteroidenSpawnTime = 0.5f;
+				fAsteroidenSpawnTime = 0.7f;
 				
-				fXSpeed = (rand()%30 +1) /20;
-				fYSpeed = (rand()%30 +1) /20;
-				int YRichtung = rand()%3 -1;
-				if (YRichtung == 0)
-					{
-					YRichtung = -1;
-					}
+				float x = rand()%10;
+				x /= 20;
+				x -= 0.25;
+
+				float y = rand()%10;
+				y /= 20;
+				y += 0.75;
+
+				fXSpeed = x;
+				fYSpeed = y;
+			} break;
+
+		case (3):
+			{
+				fAsteroidenSpawnTime = 0.7f;
+				
+				float x = rand()%10;
+				x /= 10;
+				x -= 0.5;
+				
+				float y = rand()%10;
+				y /= 20;
+				y += 1;
+
+				fXSpeed = x;
+				fYSpeed = y;
 			} break;
 	}
 
@@ -239,12 +258,12 @@ void CGame::SpawnAsteroids ()
     // Asteroid initialisieren
 	if (m_bExtraAsteroid)
 	{
-		Asteroid.Init (&m_SpriteAsteroidExtra, static_cast<float>(XPos), -60.0f, 10, fXSpeed, fYSpeed, 1, YRichtung);
+		Asteroid.Init (&m_SpriteAsteroidExtra, static_cast<float>(XPos), -60.0f, 10, fXSpeed, fYSpeed, 1, XRichtung);
 		m_bExtraAsteroid = false;
 	}
 	else
 	{
-		Asteroid.Init (&m_SpriteAsteroidNormal, static_cast<float>(XPos), -60.0f, 2, fXSpeed, fYSpeed, 1, YRichtung);
+		Asteroid.Init (&m_SpriteAsteroidNormal, static_cast<float>(XPos), -60.0f, 2, fXSpeed, fYSpeed, 1, XRichtung);
 	}
     
 	// Asteroid in Liste einfügen
@@ -337,6 +356,7 @@ void CGame::CheckCollisions ()
 			if (nAlterPStand < 20 && m_pPlayer->GetPunkte() >= 20)
 			{
 				m_bExtraAsteroid = true;
+				m_nLevel = 3;
 			}
 
 				if (nAlterPStand < 30 && m_pPlayer->GetPunkte() >= 30)

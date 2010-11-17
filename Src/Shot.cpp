@@ -29,7 +29,7 @@ void CShot::Init (CSprite *pSpriteShot, float fXPos, float fYPos)
 //
 void CShot::Update ()
 { 
-  
+  int nLevel;
   bWastedShot = false;
   // Schuss bewegen
   m_fYPos -= 600.0f * g_pTimer->GetElapsed ();
@@ -37,10 +37,17 @@ void CShot::Update ()
   m_Rect.y = static_cast<int>(m_fYPos);
 
   // Deaktivieren, falls außerhalb des Bildschirms
+  
+//  Game->GetLevel() = nLevel;
+  
+  
   if (m_fYPos < -15.0f)
   {
 	m_bIsAlive = false;
-	//bWastedShot = true;
+/*	if (nLevel  > 1)
+	{
+		bWastedShot = true;
+	} */
   }
 
 } // Update

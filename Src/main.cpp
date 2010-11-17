@@ -110,6 +110,14 @@ int main (int argc, char *argv[])
 			
 			} break;
 			
+		case ('p'):
+			{
+					float test = rand()%10;
+				test /= 10;
+				test += 0.5;
+				cout << test << endl;
+			} break;
+		
 		default:
 
 	{

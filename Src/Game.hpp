@@ -15,6 +15,7 @@ class CGame
     void Quit ();
 	void testepunkte();
 	void ZaeleDanebenGeschossen ();
+//	void GetLevel() {return m_nLevel;}
 
   private:
     void ProcessEvents   ();
